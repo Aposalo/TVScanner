@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TV Scanner</title>
+		<link rel="icon" type="image/x-icon" href="./television.png">
+		<link type="text/css" rel="stylesheet" href="css/stylesheet.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<meta charset="UTF-8">
+	</head>
+	
+	<body>
+		<script>
+			
+			$(document).ready(function() {
+				$.getJSON("http://localhost:8080/read", function(result) {
+					$.each(result, function(key, value) {
+						const queryString = window.location.search;
+						const urlParams = new URLSearchParams(queryString);
+						const name = urlParams.get('Name');
+						if (name == value.name) {
+							$("#name").val(value.name);
+							$("#year").val(value.year);
+							$("#stars").val(value.stars);
+							$("#directors").val(value.directors);
+							$("#actors").val(value.actors);
+							$("#category").val(value.category);
+						}
+					});
+				});
+			});
+			
+			$(document).ready(function() {
+				$("#update").click(function(event) {
+					event.preventDefault();
+					var formData = {
+						name : $("#name").val(),
+						year :  $("#year").val(),
+						stars :  $("#stars").val(),
+						directors :  $("#directors").val(),
+						actors :  $("#actors").val(),
+						category : $("#category").val()
+					}
+					$.ajax({
+						type : "POST",
+					    contentType : "application/json",
+					    url : "http://localhost:8080/update",
+					    data : JSON.stringify(formData),
+					    dataType : 'json',
+					    success : handleData()
+					});
+				});
+			});
+			
+			$(document).ready(function() {
+				$("#delete").click(function(event) {
+					event.preventDefault();
+					var formData = {
+						name : $("#name").val(),
+						year :  $("#year").val(),
+						stars :  $("#stars").val(),
+						directors :  $("#directors").val(),
+						actors :  $("#actors").val(),
+						category : $("#category").val()
+					}
+					$.ajax({
+						type : "POST",
+					    contentType : "application/json",
+					    url : "http://localhost:8080/delete",
+					    data : JSON.stringify(formData),
+					    dataType : 'json',
+					    success : handleData()
+					});
+				});
+			});
+			
+			function handleData() {
+				alert("Operation was a success");
+			}
+			
+			function error() {
+				alert("Error please check data");
+			}
+			
+		</script>
+		<div id="header">
+			<h1>
+				<img src = "./television.png" height = "36px" width="36px">
+				TV Scanner: Scan for Movies and TV Series
+			</h1>
+			<!--<ul>
+				<li><a href="">Create Account</a></li>
+				<li><a href="">Log In</a></li>
+				<li><a href="">Log Out</a></li>
+			</ul>-->
+		</div>
+	
+		<form class="form-inline" id="form">
+			<div class = "form-group">
+				<label for = "name"> Name: </label>
+				<input type = "text" id="name">
+			</div>
+			<div class = "form-group">
+				<label for = "year"> Year: </label>
+				<input type = "date" id="year">
+			</div>
+			<div class = "form-group">
+				<label for = "stars"> Stars: </label>
+				<input type = "number" min = "0" max = "10" id="stars">
+			</div>
+			<div class = "form-group">
+				<label for = "directors"> Directors: </label>
+				<input type ="text" id="directors">
+			</div>
+			<div class = "form-group">
+				<label for = "actors"> Actors: </label>
+				<input type = "text" id="actors">
+			</div>
+			<div class = "form-group">
+				<label for = "category"> Category: </label>
+				<select id="category">
+					<option value = "Movie"> Movie </option>
+					<option value = "TV series"> TV series </option>
+					<option value = "Comic"> Comic </option>
+					<option value = "Game"> Game </option>
+					<option value = "Music"> Music </option>
+				</select>
+			</div>
+			<button id="update" type="submit">Update</button>
+			<button id="delete" type="submit">Delete</button>
+		</form>
+		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		<div id="footer">
+			Icons made by 
+			<a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> 
+			from 
+			<a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+		</div>
+	</body>
+</html>

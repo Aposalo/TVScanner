@@ -1,0 +1,120 @@
+
+/*================== LAYOUT SECTION ====================*/
+
+body {
+	background-color: #ecdac1;
+}
+
+form {
+	border: 1px solid black;
+	top:50px;
+	width: 400px;
+	position: relative;
+	left: 525px;
+	background-color: #fcf1e1;
+}
+
+#header {
+	display:block;
+	margin: 10px;
+	height: 90px;
+	border-radius: 5px;
+	background-color: #000000;
+	text-align: center;
+	margin:10px;
+}
+
+#main {
+	background-color: #fcf1e1;
+}
+
+#submit, #functionButtons, #main {
+	position: relative;
+	left:150px;
+}
+
+#functionButtons {
+	width:200px;
+}
+
+#footer {
+	text-align: center;
+}
+
+/*================== HEADINGS SECTION ====================*/
+
+h1 {
+	color: #ffb900;
+	margin: 10px; 
+	position:relative;
+	top:20px;
+}
+
+h3 {
+	color: #d6b31f;
+}
+
+/*================== BUTTON SECTION ====================*/
+
+ul {
+	text-align: right;
+	list-style-position: inside;
+	list-style-type: none;
+	padding: 5px;
+	margin: 10px;
+	border-radius: 5px;
+}
+
+a {
+	color: #000000;
+	text-decoration: none;
+}
+
+#header ul {
+	position: relative;
+	bottom: 43px;
+}
+
+#header a {
+	color: #ffffff;
+}
+
+#navbar ul {
+	text-align: center;
+}
+
+#navbar li {
+	display: inline;
+}
+#navbar a {
+	padding: 75px;
+}
+
+table, th, tr, td {
+	background-color: #fcf1e1;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th, tr, td {
+	padding: 5px;
+	text-align: center;
+}
+
+form div {
+	padding: 10px;
+	margin: 5px;
+}
+
+/*================== ANIMATION SECTION ====================*/
+
+a:hover {
+	cursor: pointer;
+	text-align: center;
+	color:#4b463f;
+}
+
+button a:hover {
+	text-decoration: none;
+	color:black;
+}

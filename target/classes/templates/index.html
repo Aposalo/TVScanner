@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>TV Scanner</title>
+		<link rel="icon" type="image/x-icon" href="./television.png">
+		<link type="text/css" rel="stylesheet" href="css/stylesheet.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	</head>
+	
+	<body>
+	<script>
+		$(document).ready(function() {
+			$.getJSON("http://localhost:8080/read", function(result) {
+				var eventData = "";
+				$.each(result, function(key, value) {
+					eventData += "<tr>";
+					eventData += "<td><a onclick=updateProduct(this.innerHTML)>" + value.name + "</a></td>";
+					eventData += "<td>" + value.year + "</td>";
+					eventData += "<td>" + value.stars + "</td>";
+					eventData += "<td>" + value.directors + "</td>";
+					eventData += "<td>" + value.actors + "</td>";
+					eventData += "<td>" + value.category + "</td>";
+					eventData += "</tr>";
+				});
+				$("#myTable").append(eventData);
+			});
+		});
+		
+		function updateProduct(name) {
+			window.location = "updateArray.html?Name="+name;
+		}
+		
+		</script>
+		<div id="header">
+			<h1> 
+				<img src = "./television.png" height = "36px" width = "36px">
+				TV Scanner: Scan for Movies and TV Series
+			</h1>
+			<!--<ul>
+				<li><a href="">Create Account</a></li>
+				<li><a href="">Log In</a></li>
+				<li><a href="">Log Out</a></li>
+			</ul>-->
+		</div>
+		
+		<!-- <div id="navbar">
+			<ul>
+				<li><a href="/tableMain.html">Movies</a></a></li>
+				<li><a href="/tableMain.html">TV Series</a></li>
+				<li><a href="/tableMain.html">Comics</a></li>
+				<li><a href="/tableMain.html">Music</a></li>
+				<li><a href="/tableMain.html">Games</a></li>
+			</ul>
+		</div>-->
+		
+		<!-- <iframe frameborder = "0" src = "" name = "main" id = "main" width = "80%" height = "475px">
+			Frame not detected
+		</iframe>-->
+		
+		<table id="myTable">
+			<tr>
+				<th width = "350px"> <h3> Name </h3> </th>
+				<th width = "100px"> <h3> Year </h3> </th>
+				<th width = "50px"> <h3> Stars </h3> </th>
+				<th width = "350px"> <h3> Directors </h3> </th>
+				<th width = "400px"> <h3> Actors </h3> </th>	
+				<th width = "100px"> <h3> Category </h3> </th>			
+			</tr>
+		</table>
+		
+		<div id="functionButtons">
+			<button type="button"><a href="/addArray.html">Add</a></button>
+		</div>
+		
+		<br>
+		<br>
+		<br>
+		
+		<div id="footer">
+			Icons made by 
+			<a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> 
+			from 
+			<a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+		</div>
+	</body>
+</html>

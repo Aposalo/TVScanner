@@ -1,0 +1,6 @@
+org\aposalo\tvscanner\TVScannerLauncher.class
+org\aposalo\tvscanner\dao\ProductDAO.class
+org\aposalo\tvscanner\controller\ProductController.class
+org\aposalo\tvscanner\controller\ProductProduction.class
+org\aposalo\tvscanner\dao\ProductDAOImpl.class
+org\aposalo\tvscanner\model\Product.class
